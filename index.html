@@ -39,6 +39,7 @@
       width: 100vw; /* Full screen width */
       height: 100vh; /* Full screen height */
       object-fit: cover; /* Ensure image aspect ratio is preserved */
+      object-position: center; /* Center the image if it's cropped */
     }
   </style>
 </head>
@@ -58,9 +59,8 @@
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTklPZPv3OuzgpPdQQTycxBo8ggOc39SrtyWReX-lkiJNgn2EDXmTzcXl5e&s=10",
         "https://m.media-amazon.com/images/M/MV5BNDZmMGEwMjQtNjFlNi00ZGIxLTlkZjItNmU3Mzg4Y2E0ZjUzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
         "https://m.media-amazon.com/images/M/MV5BNDZmMGEwMjQtNjFlNi00ZGIxLTlkZjItNmU3Mzg4Y2E0ZjUzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbDL3ld9Li7ZHEmHcpLLwn_IaMyTu0clyDXPuGE-h42vsapD7VY4-P6gFs&s=10",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbDL3ld9Li7ZHEmHcpLLwn_IaMyTu0clyDXPuGE-h42vsapD7VY4-P6gFs&s=10",
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTklPZPv3OuzgpPdQQTycxBo8ggOc39SrtyWReX-lkiJNgn2EDXmTzcXl5e&s=10"
-        
       ]
     };
 
@@ -85,7 +85,7 @@
       }
 
       imageSlider.style.transform = `translateX(-${currentPosition * 100}vw)`; // Move slider by 100% of the viewport width
-    }, 2000); // Change image every 3 seconds
+    }, 2000); // Change image every 2 seconds
   </script>
 
 </body>
