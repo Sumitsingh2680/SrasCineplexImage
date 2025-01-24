@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Full Screen Horizontal Image Slideshow</title>
+  <title>Image Slideshow</title>
   <style>
     * {
       margin: 0;
@@ -18,36 +18,30 @@
 
     body {
       font-family: Arial, sans-serif;
-      background-color: black; /* Optional: Dark background */
+      background-color: black;
     }
 
+    /* Container for the image slider */
     .slider-container {
-      display: flex;
-      width: 100%;
-      height: 100vh; /* Full screen height */
-      overflow: hidden; /* Hide overflow */
+      width: 357px; /* Fixed width to match WebView width */
+      height: 449px; /* Fixed height to match WebView height */
+      overflow: hidden; /* Hide excess images outside the container */
     }
 
-    .image-slider {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
+    /* Image styling to ensure they fit inside the container */
+    .slider-container img {
       width: 100%;
-      height: 100vh; /* Ensure the images stretch to full height */
+      height: 100%;
+      object-fit: contain; /* Scale image to fit inside container without cutting it off */
     }
 
-    .image-slider img {
-      width: 100vw; /* Full screen width */
-      height: 100vh; /* Full screen height */
-      object-fit: cover; /* Ensure image aspect ratio is preserved and fully covers the screen */
-    }
   </style>
 </head>
 <body>
 
   <div class="slider-container">
-    <div class="image-slider" id="imageSlider">
-      <!-- Images will be dynamically loaded here -->
-    </div>
+    <!-- Images will be dynamically loaded here -->
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbDL3ld9Li7ZHEmHcpLLwn_IaMyTu0clyDXPuGE-h42vsapD7VY4-P6gFs&s=10" alt="Image">
   </div>
 
   <script>
@@ -63,28 +57,28 @@
       ]
     };
 
-    // Function to load images from JSON data
-    const imageSlider = document.getElementById('imageSlider');
+    const imageContainer = document.querySelector('.slider-container');
 
-    imageData.images.forEach(imageURL => {
-      const img = document.createElement('img');
-      img.src = imageURL;
-      img.alt = "Image";
-      imageSlider.appendChild(img);
-    });
-
-    // Optional: Add functionality to automatically scroll horizontally
     let currentPosition = 0;
     const totalImages = imageData.images.length;
-    const slideInterval = setInterval(() => {
-      if (currentPosition >= totalImages - 1) {
-        currentPosition = 0;
-      } else {
-        currentPosition++;
-      }
 
-      imageSlider.style.transform = `translateX(-${currentPosition * 100}vw)`; // Move slider by 100% of the viewport width
-    }, 2000); // Change image every 2 seconds
+    function loadImage(index) {
+      // Clear the existing image
+      imageContainer.innerHTML = '';
+      const img = document.createElement('img');
+      img.src = imageData.images[index];
+      img.alt = "Image";
+      imageContainer.appendChild(img);
+    }
+
+    // Initially load the first image
+    loadImage(currentPosition);
+
+    // Change the image every 3 seconds
+    setInterval(() => {
+      currentPosition = (currentPosition + 1) % totalImages;
+      loadImage(currentPosition);
+    }, 3000);
   </script>
 
 </body>
