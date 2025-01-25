@@ -23,16 +23,30 @@
 
     /* Container for the image slider */
     .slider-container {
-      width: 357px; /* Fixed width to match WebView width */
-      height: 449px; /* Fixed height to match WebView height */
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
       overflow: hidden; /* Hide excess images outside the container */
+      position: relative; /* To position the blur effect relative to the container */
     }
 
     /* Image styling to ensure they fit inside the container */
     .slider-container img {
       width: 100%;
       height: 100%;
-      object-fit: contain; /* Scale image to fit inside container without cutting it off */
+      object-fit: cover; /* Scale image to cover the entire container */
+    }
+
+    /* Dark blue blur effect covering the bottom 40% of the page */
+    .slider-container::after {
+      content: "";
+      position: absolute;
+      bottom: 0; /* Start from the very bottom of the container */
+      left: 0; /* Cover the full width */
+      width: 800px; /* Cover the full width */
+      height: 30%; /* Cover the bottom 40% of the page */
+      background: black; /* Dark blue color */
+      filter: blur(30px); /* Apply a blur effect */
+      pointer-events: none; /* Prevent the effect from interfering with interaction */
     }
 
   </style>
