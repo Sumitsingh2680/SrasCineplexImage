@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,19 +37,19 @@
       object-fit: cover; /* Scale image to cover the entire container */
     }
 
-    /* Dark blue blur effect covering the bottom 40% of the page */
+    /* Black blur effect covering the bottom 25% of the container */
     .slider-container::after {
       content: "";
       position: absolute;
       bottom: 0; /* Start from the very bottom of the container */
-      left: 0; /* Cover the full width */
-      width: 800px; /* Cover the full width */
-      height: 30%; /* Cover the bottom 40% of the page */
-      background: black; /* Dark blue color */
-      filter: blur(30px); /* Apply a blur effect */
+      left: 0; /* Ensure it starts from the left edge */
+      width: 100%; /* Full width */
+      height: 30%; /* Cover the bottom 25% of the container */
+      background: black; /* Black color */
+      border-oval: 50%; 
+      filter: blur(50px);/* Apply a strong blur effect */
       pointer-events: none; /* Prevent the effect from interfering with interaction */
     }
-
   </style>
 </head>
 <body>
